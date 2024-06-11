@@ -19,15 +19,49 @@
             Console.WriteLine("Cálculo IMC");
             Console.WriteLine("IMC é a sigla para Índice de Massa Corpórea, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.");
             Console.WriteLine("O índice é calculado da seguinte maneira: divide-se o peso do paciente pela sua altura elevada ao quadrado. Diz-se que o indivíduo tem peso normal quando o resultado do IMC está entre 18,5 e 24,9.");
-            Console.WriteLine("Quer descobrir seu IMC? Insira seu peso e sua altura nos campos abaixo e compare com os índices da tabela. Importante: siga os exemplos e use pontos como separadores.");
-            
+            Console.WriteLine("Quer descobrir seu IMC? Insira seu peso e sua altura. Importante: use pontos como separadores.");
+            Console.WriteLine();
             while (true)
             {
-                
-                Console.WriteLine("Informe o PESO da pessoa:");
-                float peso = float.Parse(Console.ReadLine());
-                Console.WriteLine("Informe a ALTURA da pessoa:");
+                Console.WriteLine("Digite 999 em qualquer opção para sair");
 
+                Console.WriteLine("Informe o GENERO da pessoa:");
+                string sexo = Console.ReadLine();
+
+                Console.WriteLine("Informe o PESO da pessoa:");
+                double peso = double.Parse(Console.ReadLine());
+                if (peso == 999)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Informe a ALTURA da pessoa:");
+                double altura = double.Parse(Console.ReadLine());
+                if (altura == 999)
+                {
+                    break;
+                }
+                Console.WriteLine();
+                double pesoAltura = (peso / altura);
+
+                double IMC = Math.Round(Math.Pow(pesoAltura, 2), 1);
+
+                Console.WriteLine("A pessoa do Genero " + sexo + " tem o IMC de " + IMC);
+
+                if (IMC <= 18.5 )
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("IMC Classificado como MAGREZA 0");
+                }else if(IMC < 25)
+                {
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.WriteLine("IMC Classificado como NORMAL 0");
+                }else if(IMC < 30)
+                {
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                    Console.WriteLine("IMC Calassificado como SOBREPESSO I");
+                }
+                Console.ResetColor();
             }
         }
     }
