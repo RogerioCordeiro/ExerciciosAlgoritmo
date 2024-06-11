@@ -26,30 +26,51 @@
                 Console.WriteLine("Digite 999 em qualquer opção para sair");
 
                 Console.WriteLine("Informe o GENERO da pessoa:");
+               
                 string sexo = Console.ReadLine();
+                
                 if (sexo == "999")
                 {
                     break;
                 }
 
+
                 Console.WriteLine("Informe o PESO da pessoa em Kg. Exemplo: 69,2:");
-                double peso = double.Parse(Console.ReadLine());
-                if (peso == 999)
+                string inputPeso = Console.ReadLine();
+
+                double peso; 
+                
+                if (inputPeso == "999")
                 {
                     break;
+                }
+                
+                if (!double.TryParse(inputPeso, out peso))
+                {
+                    Console.WriteLine("Valor digitado em peso inválido, digite novamente.");
+                    continue;
                 }
 
                 Console.WriteLine("Informe a ALTURA da pessoa em metros. Exemplo: 1,72 :");
-                double altura = double.Parse(Console.ReadLine());
-                if (altura == 999)
+                string inputAltura = Console.ReadLine();
+                double altura;
+
+                if (inputAltura == "999")
                 {
                     break;
                 }
+                
+                if (!double.TryParse(inputAltura, out altura))
+                {
+                    Console.WriteLine("Valor digitado em altura inválido, digite novamente.");
+                    continue;
+                }
+
                 Console.WriteLine();
 
                 double IMC = Math.Round(peso / (altura * altura), 1);
-                
-                Console.WriteLine("A pessoa do Genero " + sexo + " tem o IMC de " + IMC);
+
+                Console.WriteLine($"A pessoa do Genero {sexo} tem o IMC de {IMC}");
 
                 if (IMC <= 18.5 )
                 {
