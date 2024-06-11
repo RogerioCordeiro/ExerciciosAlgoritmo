@@ -32,14 +32,14 @@
                     break;
                 }
 
-                Console.WriteLine("Informe o PESO da pessoa em Kg. Exemplo: 69.2:");
+                Console.WriteLine("Informe o PESO da pessoa em Kg. Exemplo: 69,2:");
                 double peso = double.Parse(Console.ReadLine());
                 if (peso == 999)
                 {
                     break;
                 }
 
-                Console.WriteLine("Informe a ALTURA da pessoa em metros. Exemplo: 1.72 :");
+                Console.WriteLine("Informe a ALTURA da pessoa em metros. Exemplo: 1,72 :");
                 double altura = double.Parse(Console.ReadLine());
                 if (altura == 999)
                 {
@@ -47,31 +47,38 @@
                 }
                 Console.WriteLine();
 
-                double IMC = Math.Round(peso / (Math.Pow(altura, 2)), 1);
+                double IMC = Math.Round(peso / (altura * altura), 1);
                 
                 Console.WriteLine("A pessoa do Genero " + sexo + " tem o IMC de " + IMC);
 
                 if (IMC <= 18.5 )
                 {
+                    // MENOR QUE 18,5  MAGREZA 0
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("IMC Classificado como MAGREZA 0");
+
                 }else if(IMC < 25)
                 {
+                    // ENTRE 18,5 E 24,9   NORMAL  0
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("IMC Classificado como NORMAL 0");
+
                 }else if(IMC < 30)
                 {
+                    // ENTRE 25,0 E 29,9   SOBREPESO I
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("IMC Classificado como SOBREPESSO I");
+
                 }else if(IMC < 40)
                 {
                     // ENTRE 30,0 E 39,9   OBESIDADE II
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("IMC Classificado como OBESIDADE II");
+
                 }else if(IMC > 40 )
                 {
                     // MAIOR QUE 40,0  OBESIDADE GRAVE III
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("IMC Classificado como OBESIDADE GRAVE III");
                 }
 
